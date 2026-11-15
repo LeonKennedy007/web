@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Tracker</title>
+
+    <style>
+        body {
+            background: black;
+            color: white;
+            text-align: center;
+            font-family: Arial;
+        }
+
+        h1 {
+            color: lightgreen;
+        }
+
+        .box {
+            background: #222;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .green {
+            background: green;
+        }
+
+        .red {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>SMART ATTENDANCE TRACKER</h1>
+
+    <div class="box">
+
+        <h2>Mark Attendance</h2>
+
+        <input type="text" id="name"
+        placeholder="Enter Your Name">
+
+        <br><br>
+
+        <button class="green" onclick="present()">
+            Present
+        </button>
+
+        <button class="red" onclick="absent()">
+            Absent
+        </button>
+
+    </div>
+
+    <div class="box">
+
+        <h2>Attendance Details</h2>
+
+        <p>Total Classes: <span id="total">0</span></p>
+
+        <p style="color:lightgreen">
+            Present: <span id="p">0</span>
+        </p>
+
+        <p style="color:red">
+            Absent: <span id="a">0</span>
+        </p>
+
+        <h2>
+            Attendance: <span id="percent">0</span>%
+        </h2>
+
+    </div>
+
+    <script>
+
+        var total = 0;
+        var p = 0;
+        var a = 0;
+
+        function present() {
+
+            var name = document.getElementById("name").value;
+
+            if (name == "") {
+                alert("Enter your name");
+            }
+            else {
+                total++;
+                p++;
+                update();
+            }
+        }
+
+        function absent() {
+
+            var name = document.getElementById("name").value;
+
+            if (name == "") {
+                alert("Enter your name");
+            }
+            else {
+                total++;
+                a++;
+                update();
+            }
+        }
+
+        function update() {
+
+            document.getElementById("total").innerHTML = total;
+            document.getElementById("p").innerHTML = p;
+            document.getElementById("a").innerHTML = a;
+
+            var result = (p / total) * 100;
+
+            document.getElementById("percent").innerHTML =
+            result.toFixed(1);
+        }
+
+    </script>
+
+</body>
+</html>
